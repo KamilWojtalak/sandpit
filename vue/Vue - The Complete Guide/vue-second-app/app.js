@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            courseGoal: 'Initial course goal'
+            courseGoal: 'Initial course goal',
+            vueLink: 'https://vuejs.org/'
         }
     },
     methods: {
@@ -9,4 +10,4 @@ const app = Vue.createApp({
     }
 });
 
-app.mount('#app');
+app.mount('#user-goal');
