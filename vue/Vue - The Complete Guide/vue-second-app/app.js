@@ -6,7 +6,14 @@ const app = Vue.createApp({
         }
     },
     methods: {
-
+        outputGoal() {
+            const random = Math.random();
+            if (random < .5) {
+                return 'Learn Vue!'
+            } else {
+                return 'Learn React!'
+            }
+        }
     }
 });
 
