@@ -7,18 +7,26 @@ const app = Vue.createApp({
     return {
       playerHealth: 100,
       monsterHealth: 100,
+      currentRound: 1,
     };
   },
   computed: {
     monsterBarStyles() {
-        return {width: this.monsterHealth + '%'}
+      return { width: this.monsterHealth + "%" };
     },
     playerBarStyles() {
-        return {width: this.playerHealth + '%'}
+      return { width: this.playerHealth + "%" };
     },
+    disabledSpecialAttackButton() {
+        return (this.currentRound - 1) % 3;
+    },
+    disabledHealthButton() {
+        return (this.currentRound - 1) % 4;
+    }
   },
   methods: {
     attackMonster() {
+      this.currentRound++;
       this.monsterHealth -= getRandomNumber(5, 12);
       this.attackPlayer();
     },
@@ -26,15 +34,18 @@ const app = Vue.createApp({
       this.playerHealth -= getRandomNumber(7, 13);
     },
     specialAttackMonster() {
-        this.monsterHealth -= getRandomNumber(10, 25);
-        this.attackPlayer();
+      this.currentRound++;
+      this.monsterHealth -= getRandomNumber(10, 25);
+      this.attackPlayer();
     },
     healPlayer() {
-        this.playerHealth += getRandomNumber(7, 15);
+      this.currentRound++;
+      this.playerHealth += getRandomNumber(7, 15);
     },
     surrender() {
-        console.log('surrender');
-    }
+      this.currentRound++;
+      console.log("surrender");
+    },
   },
 });
 
