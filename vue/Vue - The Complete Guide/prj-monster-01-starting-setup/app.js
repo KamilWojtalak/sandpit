@@ -25,6 +25,16 @@ const app = Vue.createApp({
     attackPlayer() {
       this.playerHealth -= getRandomNumber(7, 13);
     },
+    specialAttackMonster() {
+        this.monsterHealth -= getRandomNumber(10, 25);
+        this.attackPlayer();
+    },
+    healPlayer() {
+        this.playerHealth += getRandomNumber(7, 15);
+    },
+    surrender() {
+        console.log('surrender');
+    }
   },
 });
 
